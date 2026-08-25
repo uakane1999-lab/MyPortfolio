@@ -1,11 +1,6 @@
 // src/app/layout.tsx
 import type { Metadata } from 'next';
-import {
-  shipporiMincho,
-  spaceMono,
-  zenKakuGothicNew,
-  caveat,
-} from '@/lib/fonts';
+import { notoSerifJP, notoSansJP, grapeNuts } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -22,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${shipporiMincho.variable} ${spaceMono.variable} ${zenKakuGothicNew.variable} ${caveat.variable} antialiased`}
+        className={`${notoSerifJP.variable} ${notoSansJP.variable} ${grapeNuts.variable} antialiased`}
       >
         {children}
       </body>

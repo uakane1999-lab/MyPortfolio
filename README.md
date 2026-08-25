@@ -5,6 +5,15 @@
 
 - フロントエンド:Next.js/Typescript/TailwindCss
 
+# 立ち上げ方法
+```
+cd portfolio-site
+npm run dev
+```
+`http://localhost:3000`にアクセス
+
+
+
 # ディレクトリ構成
 ```
 src/

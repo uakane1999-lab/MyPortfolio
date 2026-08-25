@@ -2,41 +2,29 @@
 // サイト全体で使うフォントをここに集約する
 // next/font/googleはビルド時にフォントを最適化してホスティングしてくれる
 
-import {
-  Shippori_Mincho,
-  Space_Mono,
-  Zen_Kaku_Gothic_New,
-  Caveat,
-} from 'next/font/google';
+// src/lib/fonts.ts
+import { Noto_Serif_JP, Noto_Sans_JP, Grape_Nuts } from 'next/font/google';
 
-// 見出し(和文): 「構造を描く人間から、」のような大見出し用
-export const shipporiMincho = Shippori_Mincho({
+// 見出し・本文(和文明朝体): 「構造を描く人間から、」などメインの文章
+export const notoSerifJP = Noto_Serif_JP({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-shippori-mincho', // CSS変数として使う
+  weight: ['400', '500', '600'],
+  variable: '--font-noto-serif-jp',
   display: 'swap',
 });
 
-// ラベル・ナビ(英字): HOME / ABOUT / SKILLS のような製図の注記文字
-export const spaceMono = Space_Mono({
+// ナビ・ラベル・スキルテキスト(和文ゴシック)
+export const notoSansJP = Noto_Sans_JP({
   subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-space-mono',
+  weight: ['100', '400', '500'],
+  variable: '--font-noto-sans-jp',
   display: 'swap',
 });
 
-// 本文(和文): 可読性重視のゴシック
-export const zenKakuGothicNew = Zen_Kaku_Gothic_New({
+// ロゴ・手書きアクセント(Portfolio / Thank you!)
+export const grapeNuts = Grape_Nuts({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-zen-kaku',
-  display: 'swap',
-});
-
-// 手書きアクセント: "Thank you!" のような一点だけの演出用
-export const caveat = Caveat({
-  subsets: ['latin'],
-  weight: ['500', '600'],
-  variable: '--font-caveat',
+  weight: ['400'],
+  variable: '--font-grape-nuts',
   display: 'swap',
 });
