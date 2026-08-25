@@ -1,24 +1,28 @@
+// src/app/data/projects.ts
+
 export interface Project {
+  slug: string;
   title: string;
+  description: string;
   tags: string[];
-  href?: string;
   imageUrl?: string;
 }
 
 export const projects: Project[] = [
   {
-    title: 'Task Management App',
-    tags: ['React', 'TypeScript', 'Firebase'],
-    imageUrl: '/projects/task-management.png',
+    slug: 'enkatsu',
+    title: '保育園アプリ「ENKATSU」',
+    description:
+      '復職を控えた保護者に向けて、保育園探し・比較ができるアプリの開発を行いました。',
+    tags: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+    imageUrl: '/projects/project1.png',
   },
   {
-    title: 'Architecture Studio Site',
-    tags: ['Next.js', 'WordPress', 'SCSS'],
-    imageUrl: '/projects/architecture-studio.png',
-  },
-  {
-    title: 'Study Record App',
-    tags: ['Vue', 'Express', 'MongoDB'],
-    imageUrl: '/projects/study-record.png',
+    slug: 'gohoubi-bank',
+    title: 'ごほうびBANK',
+    description:
+      'LINE developersとsunabarの銀行APIを活用したアプリの開発を行いました。',
+    tags: ['LINE Messaging API', 'AWS Lambda', 'JavaScript'],
+    imageUrl: '/projects/project2.png',
   },
 ];

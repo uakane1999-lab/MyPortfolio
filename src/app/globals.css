@@ -3,27 +3,20 @@
 
 /* ==========================================
    デザイントークン定義
-   ブループリント(製図)をコンセプトにした配色
    ========================================== */
 @theme {
-  /* カラー: 製図の実素材から取った色 */
-  --color-paper: #f3f0e7;       /* ベース背景(ケント紙) */
-  --color-paper-shade: #ebe7dc; /* セクション背景の陰影 */
-  --color-ink: #2a2a28;         /* 見出し・本文(製図の黒インク) */
-  --color-graphite: #8c887e;    /* 補助テキスト・罫線(鉛筆の下描き) */
-  --color-blueprint: #25404f;   /* アクセント(青焼き図面のインク) */
-  --color-blueprint-light: #3d5a6c; /* ブループリント紺の明るめバリエーション */
+  --color-paper: #f7f5f3;
+  --color-paper-shade: #ebe7dc;
+  --color-ink: #333333;
+  --color-graphite: #9da1a6;
+  --color-blueprint: #25404f;
+  --color-blueprint-muted: #5b7686;
 
-  /* フォント: layout.tsx でCSS変数として注入されたものをTailwindに接続 */
-  --font-display: var(--font-shippori-mincho);
-  --font-label: var(--font-space-mono);
-  --font-body: var(--font-zen-kaku);
-  --font-accent: var(--font-caveat);
+  --font-display: var(--font-noto-serif-jp);
+  --font-label: var(--font-noto-sans-jp);
+  --font-accent: var(--font-grape-nuts);
 }
 
-/* ==========================================
-   ベーススタイル
-   ========================================== */
 html {
   scroll-behavior: smooth;
 }
@@ -31,31 +24,23 @@ html {
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
-  font-family: var(--font-body);
+  font-family: var(--font-display);
 }
 
-/* 見出し用の明朝体 */
 .font-display {
   font-family: var(--font-display);
 }
 
-/* ナビ・ラベル用のモノスペース(字間を広めに) */
 .label-sm {
   font-family: var(--font-label);
   font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-/* 手書きアクセント用 */
 .font-accent {
   font-family: var(--font-accent);
 }
 
-/* ==========================================
-   ブループリントの薄いグリッド背景
-   セクション全体に「図面の上にいる」感覚を出す
-   ========================================== */
 .blueprint-grid {
   background-image:
     linear-gradient(var(--color-graphite) 1px, transparent 1px),
@@ -65,15 +50,11 @@ body {
   opacity: 0.06;
 }
 
-/* ==========================================
-   縦書きテキスト(Hero横の "Design the structure" など)
-   ========================================== */
 .vertical-text {
   writing-mode: vertical-rl;
   text-orientation: mixed;
 }
 
-/* reduced motion対応 */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

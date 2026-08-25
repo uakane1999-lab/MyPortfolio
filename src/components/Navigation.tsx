@@ -1,14 +1,17 @@
+// src/app/components/Navigation.tsx
+//ナビゲーションバー
+
 'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const navItems = [
-  { label: 'HOME', href: '#home' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'SKILLS', href: '#skills' },
-  { label: 'PROJECTS', href: '#projects' },
-  { label: 'CONTACT', href: '#contact' },
+  { label: 'HOME', href: '/' },
+  { label: 'ABOUT', href: '/profile' },
+  { label: 'PROJECTS', href: '/project' },
+  { label: 'CONTACT', href: '/#contact' },
 ];
 
 export default function Navigation() {
@@ -18,19 +21,25 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5 bg-paper/90 backdrop-blur-sm border-b border-graphite/20">
-        <Link href="#home" className="flex flex-col leading-none">
-          <span className="font-display text-xl tracking-widest text-ink">Portfolio</span>
-          <span className="label-sm text-graphite mt-1">Web Engineer</span>
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo1.png"
+            alt="Portfolio"
+            width={320}
+            height={96}
+            className="h-20 w-auto object-contain"
+            priority
+          />
         </Link>
 
         <div className="flex items-center gap-8 md:gap-10">
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
-                key={item.href}
+                key={item.label}
                 href={item.href}
-                className="label-sm text-graphite hover:text-blueprint transition-colors"
+                className="label-sm text-ink hover:text-blueprint-muted transition-colors"
               >
                 {item.label}
               </Link>
@@ -56,10 +65,10 @@ export default function Navigation() {
       >
         {navItems.map((item) => (
           <Link
-            key={item.href}
+            key={item.label}
             href={item.href}
             onClick={closeMenu}
-            className="font-display text-2xl text-ink hover:text-blueprint"
+            className="font-display text-2xl text-ink hover:text-blueprint-muted"
           >
             {item.label}
           </Link>
