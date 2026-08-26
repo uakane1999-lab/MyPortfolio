@@ -11,13 +11,38 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-24 pb-16 px-6 md:px-12 overflow-hidden bg-no-repeat"
-      style={{
-        backgroundImage: "url('/background.png')",
-        backgroundSize: '80% auto',
-        backgroundPosition: 'right center',
-      }}
+      // min-h-screenだとテキスト量に関わらず画面高さ分の余白が必ず生まれ、
+      // 特にスマホではABOUT MEまでの間隔が間延びして見えるため、
+      // lg未満は画面高さの85%程度に抑え、lg以上で従来通りフル画面に戻す。
+      // pb-16もモバイルでは詰める。
+      className="relative min-h-[85vh] lg:min-h-screen flex items-center pt-24 pb-8 sm:pb-12 lg:pb-16 px-6 md:px-12 overflow-hidden"
     >
+      {/*
+        背景画像はレイアウトが1カラムかどうかで扱いを分ける。
+        lg未満（1カラムでテキストと重なる）は、大きめサイズ＋低めの不透明度にして
+        雰囲気だけ伝わるようにし、テキストの可読性を確保する。
+      */}
+      <div
+        className="lg:hidden absolute inset-0 bg-no-repeat opacity-25"
+        style={{
+          backgroundImage: "url('/background.png')",
+          backgroundSize: '140% auto',
+          backgroundPosition: 'center top',
+        }}
+        aria-hidden="true"
+      />
+
+      {/* lg以上（2カラムでテキストは左2/5のみ）は元のデザイン通り、右寄せ・フル不透明度 */}
+      <div
+        className="hidden lg:block absolute inset-0 bg-no-repeat"
+        style={{
+          backgroundImage: "url('/background.png')",
+          backgroundSize: '80% auto',
+          backgroundPosition: 'right center',
+        }}
+        aria-hidden="true"
+      />
+
       <div className="blueprint-grid absolute inset-0" aria-hidden="true" />
 
       <div className="hidden lg:flex vertical-text absolute left-4 top-1/2 -translate-y-1/2 gap-6 label-sm text-graphite">
@@ -27,13 +52,18 @@ export default function Hero() {
 
       <div className="relative w-full flex items-center max-w-7xl mx-auto">
         <div className="w-full lg:w-2/5 lg:pl-8">
-          {/* 各行をwhitespace-nowrapにして、幅が狭くても意図しない3行目への折り返しを防ぐ */}
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl text-ink leading-relaxed">
-            <span className="block whitespace-nowrap">構造を描く人間から、</span>
-            <span className="block whitespace-nowrap">仕組みを創るエンジニアへ。</span>
+          {/*
+            見出しは1行ずつ改行させたいが、幅の狭い端末（iPhone SEなど320px前後）では
+            nowrapのままだと文字がはみ出す可能性があるため、
+            sm未満ではwhitespace-normalで折り返しを許可し、sm以上でnowrapに切り替える。
+          */}
+          <h1 className="font-display text-xl sm:text-3xl md:text-4xl lg:text-5xl text-ink leading-snug sm:leading-relaxed">
+            <span className="block whitespace-normal sm:whitespace-nowrap">構造を描く人間から、</span>
+            <span className="block whitespace-normal sm:whitespace-nowrap">仕組みを創るエンジニアへ。</span>
           </h1>
-          <p className="mt-6 leading-loose">
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base leading-loose text-[#5B7686]">
             建築で培った「設計力」「課題解決力」「チームで創る力」を活かし、
+            <br className="hidden sm:block" />
             ユーザーに価値を届けるWebサービスを開発します。
           </p>
         </div>
