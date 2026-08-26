@@ -1,64 +1,110 @@
 // src/app/components/CareerTimeline.tsx
-//ABOUT部分の経歴部分
+//プロフィールの部分の経歴部分
 
 import { career, NoteLine } from '@/data/profile';
 
 export default function CareerTimeline() {
   return (
-    <div className="relative border-l border-graphite/30 ml-3 md:ml-4 space-y-12">
+    <div className="relative">
+      {/* タイムラインの縦線 */}
+      <div
+        className="absolute left-[88px] md:left-[104px] top-0 bottom-0 w-px bg-graphite/30"
+        aria-hidden="true"
+      />
+
       {career.map((item, index) => (
-        <div key={index} className="relative pl-6 md:pl-8">
-          {/* タイムラインのドット */}
-          <span className="absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full bg-graphite border border-paper" />
-
+        <div
+          key={index}
+          className="relative grid grid-cols-[72px_32px_1fr] md:grid-cols-[88px_32px_1fr] gap-0 pb-12 last:pb-0"
+        >
           {/* 日付 */}
-          <time className="font-display text-sm text-ink/60 font-medium">
-            {item.date}
-          </time>
+          <div className="pt-0 text-right pr-3">
+            <time className="font-display text-sm text-[#5B7686] font-medium whitespace-nowrap">
+              {item.date}
+            </time>
+          </div>
 
-          {/* タイトル */}
-          <h3 className="font-display text-lg text-ink font-semibold mt-1">
-            {item.title}
-          </h3>
+          {/* タイムライン */}
+          <div className="relative">
+            <span className="absolute left-1/2 top-1.5 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-paper border border-graphite/50" />
+          </div>
 
-          {/* 説明文 */}
-          {item.description && item.description.length > 0 && (
-            <div className="mt-2 space-y-1">
-              {item.description.map((desc, i) => (
-                <p key={i} className="font-display text-sm text-ink/80 leading-relaxed">
-                  {desc}
-                </p>
-              ))}
-            </div>
-          )}
+          {/* 内容 */}
+          <div className="pl-4 md:pl-5">
+            {/* タイトル */}
+            <h3 className="font-display text-lg text-ink font-semibold">
+              {item.title}
+            </h3>
 
-          {/* 補足・注記（卒業制作や業務内容） */}
-          {item.note && (
-            <div className="mt-4 p-4 bg-paper/50 rounded border border-graphite/10">
-              <span className="block text-xs font-semibold text-ink/60 mb-2">
-                {item.note.label}
-              </span>
-              <ul className="space-y-1.5">
-                {item.note.lines.map((line: NoteLine, i: number) => (
-                  <li key={i} className="font-display text-sm text-ink/90">
+            {/* 説明文 */}
+            {item.description && item.description.length > 0 && (
+              <div className="mt-2 space-y-1">
+                {item.description.map((desc, i) => (
+                  <p
+                    key={i}
+                    className="font-display text-sm text-ink/80 leading-relaxed"
+                  >
+                    {desc}
+                  </p>
+                ))}
+              </div>
+            )}
+
+            {/* 補足・注記 */}
+            {item.note && (
+              <div className="mt-4 inline-block max-w-full p-3 md:p-4 bg-paper/70 border border-[#5B7686]/50 rounded-sm">
+                <span className="block text-xs font-semibold text-ink/70 mb-2">
+                  【{item.note.label}】
+                </span>
+
+                <ul className="space-y-1">
+                  {item.note.lines.map((line: NoteLine, i: number) => (
+                    <li
+                      key={i}
+                      className="font-display text-sm text-ink/90 leading-relaxed"
+                    >
+                      
                     {typeof line === 'string' ? (
-                      <span>{line}</span>
+                      line.includes('ENKATSU') ? (
+                        <a
+                          href="/project"
+                          className="
+                            underline
+                            underline-offset-2
+                            hover:opacity-70
+                            transition-opacity
+                            text-ink
+                            font-medium
+                          "
+                        >
+                          {line}
+                        </a>
+                      ) : (
+                        <span>{line}</span>
+                      )
                     ) : (
                       <a
                         href={line.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 underline hover:opacity-70 transition-opacity text-ink font-medium"
+                        className="
+                          underline
+                          underline-offset-2
+                          hover:opacity-70
+                          transition-opacity
+                          text-ink
+                          font-medium
+                        "
                       >
-                        <span>{line.text}</span>
-                        <span className="text-xs text-ink/60">↗</span>
+                        {line.text}
                       </a>
                     )}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
       ))}
     </div>

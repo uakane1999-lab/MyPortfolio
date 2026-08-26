@@ -5,8 +5,10 @@ export const profile = {
   nameEn: 'uchida akane',
   birthPlace: '神奈川県出身',
   birthDate: '1999年10月9日生まれ',
-  bioShort:
-    '前職では、イベント・展示会の施工管理として、工程管理、図面作成、クライアント・協力会社との調整を担当。現場で培った課題解決力と、モノづくりへのこだわりを強みに、エンジニアとして新たな価値を生み出していきます。',
+    bioShort: [
+   '前職では、イベント・展示会の施工管理として、工程管理、図面作成、クライアント・協力会社との調整を担当。',
+    '現場で培った課題解決力と、モノづくりへのこだわりを強みに、エンジニアとして新たな価値を生み出していきます。',
+    ],
   photoUrl: '/profile/myface.JPG',
 };
 
@@ -71,7 +73,7 @@ export const career: CareerItem[] = [
   },
   { date: '2026.06', title: '株式会社丹青ディスプレイ 退社' },
   { date: '2026.07', title: 'Ms.Engineer 卒業' },
-  { date: '2026.07', title: 'エンジニアとして学習を継続・転職活動中' },
+  { date: '2026.08', title: 'エンジニアとして学習を継続・転職活動中' },
 ];
 
 export const skillGroups: string[][] = [
