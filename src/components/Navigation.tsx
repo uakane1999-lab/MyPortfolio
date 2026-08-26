@@ -21,7 +21,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 md:px-12 py-5">
+      <nav className="fixed top-0 right-0 left-0 z-50 flex items-center justify-between px-6 py-5 md:px-12">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo1.png"
@@ -34,7 +34,7 @@ export default function Navigation() {
         </Link>
 
         <div className="flex items-center gap-8 md:gap-10">
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.label}
@@ -48,19 +48,25 @@ export default function Navigation() {
 
           <button
             onClick={toggleMenu}
-            className="flex flex-col justify-center items-center w-6 h-6 gap-1.5 md:hidden z-50 focus:outline-none"
+            className="z-50 flex h-6 w-6 flex-col items-center justify-center gap-1.5 focus:outline-none md:hidden"
             aria-label="メニューを開閉"
           >
-            <span className={`h-0.5 w-6 bg-ink transition-all duration-300 ${isOpen ? 'rotate-45 translate-y-2' : ''}`} />
-            <span className={`h-0.5 w-6 bg-ink transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`} />
-            <span className={`h-0.5 w-6 bg-ink transition-all duration-300 ${isOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            <span
+              className={`bg-ink h-0.5 w-6 transition-all duration-300 ${isOpen ? 'translate-y-2 rotate-45' : ''}`}
+            />
+            <span
+              className={`bg-ink h-0.5 w-6 transition-all duration-300 ${isOpen ? 'opacity-0' : ''}`}
+            />
+            <span
+              className={`bg-ink h-0.5 w-6 transition-all duration-300 ${isOpen ? '-translate-y-2 -rotate-45' : ''}`}
+            />
           </button>
         </div>
       </nav>
 
       <div
-        className={`fixed inset-0 bg-paper/95 z-40 md:hidden flex flex-col items-center justify-center gap-8 transition-all duration-300 ${
-          isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
+        className={`bg-paper/95 fixed inset-0 z-40 flex flex-col items-center justify-center gap-8 transition-all duration-300 md:hidden ${
+          isOpen ? 'visible opacity-100' : 'invisible opacity-0'
         }`}
       >
         {navItems.map((item) => (
@@ -68,7 +74,7 @@ export default function Navigation() {
             key={item.label}
             href={item.href}
             onClick={closeMenu}
-            className="font-display text-2xl text-ink hover:text-blueprint-muted"
+            className="font-display text-ink hover:text-blueprint-muted text-2xl"
           >
             {item.label}
           </Link>

@@ -5,10 +5,10 @@ export const profile = {
   nameEn: 'uchida akane',
   birthPlace: '神奈川県出身',
   birthDate: '1999年10月9日生まれ',
-    bioShort: [
-   '前職では、イベント・展示会の施工管理として、工程管理、図面作成、クライアント・協力会社との調整を担当。',
+  bioShort: [
+    '前職では、イベント・展示会の施工管理として、工程管理、図面作成、クライアント・協力会社との調整を担当。',
     '現場で培った課題解決力と、モノづくりへのこだわりを強みに、エンジニアとして新たな価値を生み出していきます。',
-    ],
+  ],
   photoUrl: '/profile/myface.JPG',
 };
 
@@ -77,7 +77,7 @@ export const career: CareerItem[] = [
 ];
 
 export const skillGroups: string[][] = [
-  ['TypeScript', 'Next.js','Figma', 'illustrator'],
-  ['Express.js','MySQL', 'Prisma', 'Docker'],
+  ['TypeScript', 'Next.js', 'Figma', 'illustrator'],
+  ['Express.js', 'MySQL', 'Prisma', 'Docker'],
   ['Docker', 'GitHub'],
 ];

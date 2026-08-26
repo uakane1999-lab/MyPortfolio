@@ -17,16 +17,13 @@ export default function ProfilePage() {
       <Navigation />
 
       <main className="pt-32 pb-0">
-
         {/* ==============================
             PROFILE
         ============================== */}
-        <section className="px-6 md:px-12 max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row gap-10 md:gap-16 justify-center">
-
+        <section className="mx-auto max-w-7xl px-6 md:px-12">
+          <div className="flex flex-col justify-center gap-10 md:flex-row md:gap-16">
             {/* プロフィール写真 */}
-            <div className="relative w-full max-w-xs md:w-80 aspect-[3/4] shrink-0 mx-auto md:mx-0">
-
+            <div className="relative mx-auto aspect-[3/4] w-full max-w-xs shrink-0 md:mx-0 md:w-80">
               {/* 四隅の十字マーク */}
               {[
                 '-top-3 -left-3 -translate-x-1/2 -translate-y-1/2',
@@ -36,11 +33,11 @@ export default function ProfilePage() {
               ].map((pos) => (
                 <span
                   key={pos}
-                  className={`absolute ${pos} w-5 h-5 pointer-events-none`}
+                  className={`absolute ${pos} pointer-events-none h-5 w-5`}
                   aria-hidden="true"
                 >
-                  <span className="absolute top-1/2 left-0 w-full h-px bg-graphite/50 -translate-y-1/2" />
-                  <span className="absolute left-1/2 top-0 h-full w-px bg-graphite/50 -translate-x-1/2" />
+                  <span className="bg-graphite/50 absolute top-1/2 left-0 h-px w-full -translate-y-1/2" />
+                  <span className="bg-graphite/50 absolute top-0 left-1/2 h-full w-px -translate-x-1/2" />
                 </span>
               ))}
 
@@ -48,21 +45,16 @@ export default function ProfilePage() {
                 src={profile.photoUrl}
                 alt={profile.name}
                 fill
-                className="object-cover border border-graphite/30"
+                className="border-graphite/30 border object-cover"
               />
             </div>
 
             {/* プロフィール情報 */}
             <div className="text-center md:text-left">
-
               <p className="font-display text-ink mt-10">
-                <span className="font-semibold text-xl">
-                  {profile.name}
-                </span>
+                <span className="text-xl font-semibold">{profile.name}</span>
 
-                <span className="ml-2 text-base">
-                  {profile.nameEn}
-                </span>
+                <span className="ml-2 text-base">{profile.nameEn}</span>
               </p>
 
               <p className="font-display text-ink/70 mt-10 leading-loose">
@@ -71,23 +63,20 @@ export default function ProfilePage() {
                 {profile.birthDate}
               </p>
 
-              <p className="font-display text-ink mt-10 leading-loose max-w-xl">
+              <p className="font-display text-ink mt-10 max-w-xl leading-loose">
                 {profile.bioShort}
               </p>
-
             </div>
           </div>
         </section>
 
-
         {/* ==============================
             CAREER
         ============================== */}
-        <section className="relative bg-paper px-6 md:px-12 py-24 mt-24 overflow-hidden">
-
+        <section className="bg-paper relative mt-24 overflow-hidden px-6 py-24 md:px-12">
           {/* 背景画像 */}
           <div
-            className="absolute inset-y-0 right-0 w-[45%] pointer-events-none"
+            className="pointer-events-none absolute inset-y-0 right-0 w-[45%]"
             aria-hidden="true"
           >
             <Image
@@ -98,24 +87,16 @@ export default function ProfilePage() {
             />
           </div>
 
-
           {/* CAREERタイトル */}
-          <div className="relative flex items-start justify-center gap-4 mb-14">
-
+          <div className="relative mb-14 flex items-start justify-center gap-4">
             <div className="shrink-0">
-              <h2 className="label-sm text-ink">
-                CAREER
-              </h2>
+              <h2 className="label-sm text-ink">CAREER</h2>
 
-              <p className="font-display text-sm text-[#5B7686] mt-3">
-                経歴
-              </p>
+              <p className="font-display mt-3 text-sm text-[#5B7686]">経歴</p>
             </div>
 
-            <span className="w-200 h-px bg-graphite/40 mt-2" />
-
+            <span className="bg-graphite/40 mt-2 h-px w-200" />
           </div>
-
 
           {/* 経歴タイムライン */}
           <div className="relative flex justify-center">
@@ -129,61 +110,37 @@ export default function ProfilePage() {
               <CareerTimeline />
             </div>
           </div>
-
         </section>
-
 
         {/* ==============================
             SKILLS
         ============================== */}
-        <section className="relative bg-blueprint text-paper px-6 md:px-12 py-24 overflow-hidden">
-
+        <section className="bg-blueprint text-paper relative overflow-hidden px-6 py-24 md:px-12">
           {/* ブループリントグリッド */}
-          <div
-            className="blueprint-grid absolute inset-0 opacity-[0.08]"
-            aria-hidden="true"
-          />
+          <div className="blueprint-grid absolute inset-0 opacity-[0.08]" aria-hidden="true" />
 
-          <div className="relative max-w-4xl mx-auto">
-
+          <div className="relative mx-auto max-w-4xl">
             {/* SKILLSタイトル */}
-            <div className="flex items-center gap-4 mb-10">
-
-              <h2
-                className="label-sm text-paper"
-                id="skills"
-              >
+            <div className="mb-10 flex items-center gap-4">
+              <h2 className="label-sm text-paper" id="skills">
                 SKILLS
               </h2>
 
-              <span className="flex-1 h-px bg-paper/40" />
-
+              <span className="bg-paper/40 h-px flex-1" />
             </div>
-
 
             {/* スキル一覧 */}
             <div className="flex flex-col gap-4">
-
               {skillGroups.map((group, i) => (
-                <p
-                  key={i}
-                  className="font-display text-paper text-lg"
-                >
-                  <span className="font-semibold">
-                    {skillLabels[i] ?? ''}：
-                  </span>
+                <p key={i} className="font-display text-paper text-lg">
+                  <span className="font-semibold">{skillLabels[i] ?? ''}：</span>
 
-                  <span className="ml-2">
-                    {group.join('、')}
-                  </span>
+                  <span className="ml-2">{group.join('、')}</span>
                 </p>
               ))}
-
             </div>
-
           </div>
         </section>
-
       </main>
 
       <Footer />
